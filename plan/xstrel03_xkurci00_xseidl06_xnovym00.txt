@@ -1,0 +1,23 @@
+PLÁN 2. PROJEKTU IVS
+----––––––----------
+1) Termíny
+- 10. 3. - Discord server, GitHub repozitář, Trello projekt
+- 17. 3. - plán projektu 
+- 27. 3. - testování
+- 
+
+2) Přidělení úkolů
+- Matyáš Strelec 	- 
+- Julie Kurčíková 	- 
+- Ondřej Seidl 		-
+- Maxmilián Nový		-
+
+3) Komunikace
+- Veškerá týmová komunikace bude probíhat přes platformu Discord na vlastním serveru.
+- Na serveru byly vytvořeny místnosti pro určitá témata týkající se různých častí projektu.
+- Každý člen týmu bude navštěvovat Discord alespoň jednou denně. Každý týden proběhne hovor, kde každý člen týmu seznámí ostatní s tím, jak pokročil a proberou se další kroky.
+- Pro plánování projektu bude používána platforma Trello.
+
+4) Správa verzí
+- Pro správu verzí bude používán GitHub.
+- Repozitář se nachází na https://www.github.com/mstrlc/ivs-calculator
