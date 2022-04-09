@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Volumes/GoogleDrive/My Drive/school/ivs/ivs-calculator/src/mainwindow.ui'
+# Form implementation generated from reading ui file 'mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -560,3 +560,13 @@ class Ui_mainWindow(object):
         self.pushButton5.setText(_translate("mainWindow", "5"))
         self.menuHelp.setTitle(_translate("mainWindow", "Help"))
         self.actionOpen_user_guide.setText(_translate("mainWindow", "Open user guide"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    mainWindow = QtWidgets.QMainWindow()
+    ui = Ui_mainWindow()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(app.exec_())

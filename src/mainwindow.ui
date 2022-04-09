@@ -134,7 +134,7 @@ QFrame {
          </sizepolicy>
         </property>
         <property name="text">
-         <string>845-59</string>
+         <string/>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
@@ -162,7 +162,7 @@ QFrame {
          <number>0</number>
         </property>
         <property name="text">
-         <string>786</string>
+         <string/>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
@@ -670,7 +670,7 @@ QPushButton:pressed {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>,</string>
+           <string>.</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -813,7 +813,7 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="text">
-           <string>÷</string>
+           <string>/</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -980,7 +980,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item row="2" column="4">
-         <widget class="QPushButton" name="pushButtonMod">
+         <widget class="QPushButton" name="pushButtonLn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
             <horstretch>0</horstretch>
