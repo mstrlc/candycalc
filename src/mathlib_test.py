@@ -17,15 +17,10 @@ def test_add():
     assert mathlib.add(10.0123456789, -10.0123456789) == 0
     with pytest.raises(TypeError):
         mathlib.add(10, "a")
-    with pytest.raises(TypeError):
         mathlib.add("a", 10)
-    with pytest.raises(TypeError):
         mathlib.add("a", "a")
-    with pytest.raises(TypeError):
         mathlib.add(10, -10, -10)
-    with pytest.raises(ValueError):
         mathlib.add(10)
-    with pytest.raises(ValueError):
         mathlib.add()
 
 
@@ -45,15 +40,10 @@ def test_subtract():
     assert mathlib.subtract(10.0123456789, -10.0123456789) == 20.0246913578
     with pytest.raises(TypeError):
         mathlib.subtract(10, "a")
-    with pytest.raises(TypeError):
         mathlib.subtract("a", 10)
-    with pytest.raises(TypeError):
         mathlib.subtract("a", "a")
-    with pytest.raises(TypeError):
         mathlib.subtract(10, -10, -10)
-    with pytest.raises(TypeError):
         mathlib.subtract(10)
-    with pytest.raises(TypeError):
         mathlib.subtract()
 
 
@@ -69,18 +59,14 @@ def test_multiply():
     assert mathlib.multiply(9999999, 9999999) == 99999980000001
     assert mathlib.multiply(9999999, -9999999) == -99999980000001
     assert mathlib.multiply(10.0123456789, 10.0123456789) == 100.24706599378749
-    assert mathlib.multiply(10.0123456789, -10.0123456789) == -100.24706599378749
+    assert mathlib.multiply(
+        10.0123456789, -10.0123456789) == -100.24706599378749
     with pytest.raises(TypeError):
         mathlib.multiply(10, "a")
-    with pytest.raises(TypeError):
         mathlib.multiply("a", 10)
-    with pytest.raises(TypeError):
         mathlib.multiply("a", "a")
-    with pytest.raises(TypeError):
         mathlib.multiply(10, -10, -10)
-    with pytest.raises(ValueError):
         mathlib.multiply(10)
-    with pytest.raises(TypeError):
         mathlib.multiply()
 
 
@@ -97,19 +83,13 @@ def test_divide():
     assert mathlib.divide(10.0123456789, -10.0123456789) == -1
     with pytest.raises(ZeroDivisionError):
         mathlib.divide(10, 0)
-    with pytest.raises(ZeroDivisionError):
         mathlib.divide(0, 0)
     with pytest.raises(TypeError):
         mathlib.divide(10, "a")
-    with pytest.raises(TypeError):
         mathlib.divide("a", 10)
-    with pytest.raises(TypeError):
         mathlib.divide("a", "a")
-    with pytest.raises(TypeError):
         mathlib.divide(10, -10, -10)
-    with pytest.raises(TypeError):
         mathlib.divide(10)
-    with pytest.raises(TypeError):
         mathlib.divide()
 
 
@@ -125,10 +105,9 @@ def test_factorial():
     assert mathlib.factorial(20) == 2432902008176640000
     with pytest.raises(TypeError):
         mathlib.factorial(10, 10)
+        mathlib.factorial()
     with pytest.raises(ValueError):
         mathlib.factorial(-10)
-    with pytest.raises(TypeError):
-        mathlib.factorial()
 
 
 # test for power function with natural exponent
@@ -140,31 +119,27 @@ def test_power():
     assert mathlib.power(6, 14) == 78364164096
     with pytest.raises(ValueError):
         mathlib.power(10, 10.532)
-    with pytest.raises(ValueError):
         mathlib.power(10, -10)
     with pytest.raises(TypeError):
         mathlib.power(10, -10, -10)
-    with pytest.raises(TypeError):
         mathlib.power()
 
 
-# test for square root function
-def test_sqrt():
-    assert mathlib.sqrt(0, 4) == 0
-    assert mathlib.sqrt(5, 2) == 2.23606797749979
-    assert mathlib.sqrt(25, 2) == 5
-    assert mathlib.sqrt(0, 40) == 0
-    assert mathlib.sqrt(10, 10.532) == 1.2443676944633455
+# test for nth root function
+def test_nroot():
+    assert mathlib.nroot(0, 4) == 0
+    assert mathlib.nroot(5, 2) == 2.23606797749979
+    assert mathlib.nroot(25, 2) == 5
+    assert mathlib.nroot(0, 40) == 0
+    assert mathlib.nroot(10, 10.532) == 1.2443676944633455
+    assert mathlib.nroot(-8, 3) == -2
     with pytest.raises(ValueError):
-        mathlib.sqrt(10, -10)
-    with pytest.raises(ValueError):
-        mathlib.sqrt(-10, 10)
-    with pytest.raises(ValueError):
-        mathlib.sqrt(-10, -10)
+        mathlib.nroot(10, -10)
+        mathlib.nroot(-10, 10)
+        mathlib.nroot(-10, -10)
     with pytest.raises(TypeError):
-        mathlib.sqrt(10, 10, 10)
-    with pytest.raises(TypeError):
-        mathlib.sqrt()
+        mathlib.nroot(10, 10, 10)
+        mathlib.nroot()
 
 
 # test for natural logarithm function
@@ -175,7 +150,7 @@ def test_ln():
     assert mathlib.ln(100) == 4.605170185988092
     with pytest.raises(ValueError):
         mathlib.ln(-4)
-    with pytest.raises(ValueError):
         mathlib.ln(0)
     with pytest.raises(TypeError):
+        mathlib.ln(3, 5)
         mathlib.ln()

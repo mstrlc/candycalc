@@ -51,3 +51,7 @@ compile_commands.json
 # QtCreator local machine specific files for imported projects
 *creator.user*
 .DS_Store
+
+# Python pytest cache
+__pycache__/
+.pytest_cache/
