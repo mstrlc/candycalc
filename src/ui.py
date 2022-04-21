@@ -90,6 +90,7 @@ class Ui_mainWindow(object):
         self.labelSecond.setTextFormat(QtCore.Qt.PlainText)
         self.labelSecond.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelSecond.setIndent(20)
+        self.labelSecond.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
         self.labelSecond.setObjectName("labelSecond")
         self.verticalLayout.addWidget(self.labelSecond)
         self.labelMain = QtWidgets.QLabel(self.centralwidget)
@@ -103,6 +104,7 @@ class Ui_mainWindow(object):
         self.labelMain.setTextFormat(QtCore.Qt.PlainText)
         self.labelMain.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelMain.setIndent(20)
+        self.labelMain.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
         self.labelMain.setObjectName("labelMain")
         self.verticalLayout.addWidget(self.labelMain)
         self.gridLayout = QtWidgets.QGridLayout()
@@ -518,7 +520,7 @@ class Ui_mainWindow(object):
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
         mainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(mainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 420, 24))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 420, 21))
         self.menuBar.setObjectName("menuBar")
         self.menuHelp = QtWidgets.QMenu(self.menuBar)
         self.menuHelp.setObjectName("menuHelp")
@@ -560,13 +562,3 @@ class Ui_mainWindow(object):
         self.pushButton5.setText(_translate("mainWindow", "5"))
         self.menuHelp.setTitle(_translate("mainWindow", "Help"))
         self.actionOpen_user_guide.setText(_translate("mainWindow", "Open user guide"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    mainWindow = QtWidgets.QMainWindow()
-    ui = Ui_mainWindow()
-    ui.setupUi(mainWindow)
-    mainWindow.show()
-    sys.exit(app.exec_())

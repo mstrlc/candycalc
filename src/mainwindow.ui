@@ -148,6 +148,9 @@ QFrame {
         <property name="indent">
          <number>20</number>
         </property>
+        <property name="textInteractionFlags">
+         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -175,6 +178,9 @@ QFrame {
         </property>
         <property name="indent">
          <number>20</number>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
         </property>
        </widget>
       </item>
@@ -1059,7 +1065,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>420</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -1079,12 +1085,12 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonsNum">
+  <buttongroup name="buttonsOper">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="buttonsOper">
+  <buttongroup name="buttonsNum">
    <property name="exclusive">
     <bool>false</bool>
    </property>
