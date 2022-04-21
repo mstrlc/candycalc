@@ -25,6 +25,9 @@ class Ui_mainWindow(object):
         mainWindow.setMaximumSize(QtCore.QSize(420, 530))
         palette = QtGui.QPalette()
         mainWindow.setPalette(palette)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        mainWindow.setWindowIcon(icon)
         mainWindow.setStyleSheet("QLabel#labelMain {\n"
 "    font: 52pt \"SF Mono\";\n"
 "    font-weight: 1000;\n"
@@ -535,7 +538,7 @@ class Ui_mainWindow(object):
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        mainWindow.setWindowTitle(_translate("mainWindow", "Calculator"))
+        mainWindow.setWindowTitle(_translate("mainWindow", "candyCalc"))
         self.pushButtonFact.setText(_translate("mainWindow", "!"))
         self.pushButtonRBrac.setText(_translate("mainWindow", ")"))
         self.pushButtonEq.setText(_translate("mainWindow", "="))

@@ -39,7 +39,12 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Calculator</string>
+   <string>candyCalc</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>icon.ico</normalon>
+   </iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QLabel#labelMain {
