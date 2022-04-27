@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from pip import main
 from ui import Ui_mainWindow
 
+
+
 class mainWindow(QMainWindow, Ui_mainWindow):
 
     def __init__(self):
@@ -125,6 +127,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.pushButtonRoot.setText("√x")
 
     def addFunction(self, function): # Add a function to the display
+        if(self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^"):
+            self.deleteDigit()
+            self.labelMain.setText(self.labelMain.text() + function)
         if(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
             self.labelMain.setText(self.labelMain.text() + function)
         elif(function == "√("):
