@@ -4,12 +4,6 @@ parentheses = ["(", ")"]
 operators = ["ln", "!", "√", "^", "×", "/", "+", "-"]
 precedence = [["(",")"],["ln"], ["!"], ["√" ,"^"], ["×", "/"], ["+", "-"]]
 
-def check_num(str):
-    try:
-        print(str)
-    except:
-        exit
-
 def solve_expr(expr):
     result=[]
     for operator_set in precedence:
@@ -24,9 +18,6 @@ def solve_expr(expr):
                     result = int(expr[i-1])-int(expr[i+1])
     return(result)
 
-
-#if c == '(':
-#    parsed.append(solve_expr(input_str[index:input_str.find(')')]))
 
 def parse_input(input):
     str = input
