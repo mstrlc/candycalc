@@ -6,16 +6,23 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from pip import main
 from ui import Ui_mainWindow
 
-
-
+## @package candyCalc
+#  @brief   Main GUI window of the application
 class mainWindow(QMainWindow, Ui_mainWindow):
 
+    ## @brief   Main window constructor
+    #
+    # Create the main window and show it, then connect the signals
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.show()
+        self.connectButtons()
 
-        # Connect buttons to functions
+    ## @brief Connects the GUI buttons to function calls
+    # 
+    # Call the correct method for each button pressed
+    def connectButtons(self):
         # Digit buttons
         self.pushButton0.clicked.connect(lambda:self.addDigit("0"))
         self.pushButton1.clicked.connect(lambda:self.addDigit("1"))
@@ -50,7 +57,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.pushButtonCE.clicked.connect(self.clearAll)
         self.pushButtonEq.clicked.connect(self.finishCalculation)
 
-    # Handle keyboard input
+    ## @brief Handle the keyboard input and connect it to the GUI buttons
+    # 
+    # Call the correct method for each key pressed
     def keyPressEvent(self, e):
         # Digit buttons
         if e.key() == Qt.Key_0:
@@ -109,14 +118,29 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.finishCalculation()
         elif e.key() == Qt.Key_Escape:
             self.clearAll()
-        
+    
+    ## @brief Add a digit to the display
+    #
+    # @param digit Digit to be added to the display
     def addDigit(self, digit): # Add digit to the display
         self.labelMain.setText(self.labelMain.text() + digit)
 
+    ## @brief Add a decimal point to the display
+    # 
+    # A decimal point can only be added after a digit
+    #
+    # @todo Check if a decimal point is already present in the current number
     def addDecimal(self): # Add decimal point to the display, only if the last character is a digit
         if(self.labelMain.text()[-1].isdigit()):
             self.labelMain.setText(self.labelMain.text() + ".")
 
+    ## @brief Add a bracket to the display
+    #
+    # It's possible to only have one level of brackets, therefore if a bracket was opened, it must be closed
+    # If user tries to open another bracket, the character is not added
+    # Also, change the root function to the default value if closing a bracket
+    #
+    # @param bracket Bracket to be added (either "(" or ")")
     def addBracket(self, bracket): # Add a bracket to the display
         if(bracket == "("): # Add opening bracket only if the the previous bracket was closed
             if(self.labelMain.text().count("(") == self.labelMain.text().count(")")):
@@ -126,7 +150,13 @@ class mainWindow(QMainWindow, Ui_mainWindow):
                 self.labelMain.setText(self.labelMain.text() + bracket)
             self.pushButtonRoot.setText("√x")
 
-    def addFunction(self, function): # Add a function to the display
+    ## @brief Add a function character to the display
+    #
+    # If the last entered character was also a fucntion character, replace it with the currently pressed one, so there can't be two function characters in a row
+    # If the function is root, change the text on the button to "n√x" to better indicate the function
+    #
+    # @param function Function character to be added
+    def addFunction(self, function):
         if(self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^"):
             self.deleteDigit()
             self.labelMain.setText(self.labelMain.text() + function)
@@ -140,20 +170,35 @@ class mainWindow(QMainWindow, Ui_mainWindow):
                 self.labelMain.setText(self.labelMain.text() + ",")
                 self.pushButtonRoot.setText("√x")
 
-    def deleteDigit(self): # Delete the last character
+    ## @brief Delete the last digit from the display
+    #
+    # If the deleted character was root, the root button is reset to its default value
+    def deleteDigit(self):
         if(self.labelMain.text()[-1] == "√"):
             self.pushButtonRoot.setText("√x")
         self.labelMain.setText(self.labelMain.text()[:-1])
 
-    def clearAll(self): # Clear everything
+    ## @brief Clear the display
+    #
+    # Remove all text from main and secondary labels
+    # Set the root button text to the default
+    def clearAll(self):
         self.pushButtonRoot.setText("√x")
         self.labelSecond.setText("")
         self.labelMain.setText("")
 
+    ## @brief Finish the calculation
+    #
+    # Calculate the result using our parse function and math library
+    # Set the result to be the text of main label
+    # Set the calculation to be the text of the secondary label
     def finishCalculation(self): # Calculate the expression
         self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
         self.labelMain.setText(str(eval(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
 
+## @brief Main function
+#
+# Handle creating and closing the main window
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = mainWindow()
