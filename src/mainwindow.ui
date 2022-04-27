@@ -76,7 +76,7 @@ QPushButton:pressed {
     background-color: #22283A;
 }
 QFrame {
-	background-color: #FFFFFF;
+	background-color: #F5F5F5;
 }
 </string>
   </property>
@@ -224,7 +224,7 @@ QFrame {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>!</string>
+           <string>x!</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -334,7 +334,7 @@ QPushButton:pressed {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>CE</string>
+           <string>CLR</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -783,7 +783,7 @@ QPushButton:pressed {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>√</string>
+           <string>√x</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -933,7 +933,7 @@ QPushButton:pressed {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>^</string>
+           <string>x^n</string>
           </property>
           <property name="autoDefault">
            <bool>false</bool>
@@ -1014,7 +1014,7 @@ QPushButton:pressed {
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>ln</string>
+           <string>ln(x)</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -1090,12 +1090,12 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonsOper">
+  <buttongroup name="buttonsNum">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="buttonsNum">
+  <buttongroup name="buttonsOper">
    <property name="exclusive">
     <bool>false</bool>
    </property>
