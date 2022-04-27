@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from signal import signal
 import string
 import sys
@@ -101,7 +99,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.addFunction("-")
         elif e.key() == Qt.Key_Plus:
             self.addFunction("+")
-            
+
         # Other buttons
         elif e.key() == Qt.Key_Backspace or e.key() == Qt.Key_Delete:
             self.deleteDigit()
@@ -124,15 +122,26 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         elif(bracket == ")"): # Add closing bracket if the previous bracket is open, not closed
             if(self.labelMain.text().count("(") == self.labelMain.text().count(")") + 1):
                 self.labelMain.setText(self.labelMain.text() + bracket)
+            self.pushButtonRoot.setText("√x")
 
     def addFunction(self, function): # Add a function to the display
-        if(len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")")): # If previous character is a digit or a closing bracket
+        if(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
             self.labelMain.setText(self.labelMain.text() + function)
+        elif(function == "√("):
+            if(self.pushButtonRoot.text() == "√x"):
+                self.labelMain.setText(self.labelMain.text() + "√(")
+                self.pushButtonRoot.setText("ⁿ√x")
+            elif(self.pushButtonRoot.text() == "ⁿ√x"):
+                self.labelMain.setText(self.labelMain.text() + ",")
+                self.pushButtonRoot.setText("√x")
 
     def deleteDigit(self): # Delete the last character
+        if(self.labelMain.text()[-1] == "√"):
+            self.pushButtonRoot.setText("√x")
         self.labelMain.setText(self.labelMain.text()[:-1])
 
     def clearAll(self): # Clear everything
+        self.pushButtonRoot.setText("√x")
         self.labelSecond.setText("")
         self.labelMain.setText("")
 
