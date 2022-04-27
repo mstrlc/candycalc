@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
-
+import mathlib
 parentheses = ["(", ")"] #supported parentheses
 operators = ["ln", "!", "√", "^", "×", "/", "+", "-"] #supported operators
 precedence = [["(",")"],["ln"], ["!"], ["√" ,"^"], ["×", "/"], ["+", "-"]] #set precendence of operatos
 
+# To use this module use eiter
+# parse_input(input) for parsing input to expression
+# solve_expr(expr) to solve the expression
+# get_result(input) to get a result of 2 functions above
 
 #TODO: after merge adjust the funcion for mathlib operations
 
