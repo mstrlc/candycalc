@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from signal import signal
 import string
 import sys
@@ -48,7 +50,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.pushButtonCE.clicked.connect(self.clearAll)
         self.pushButtonEq.clicked.connect(self.finishCalculation)
 
+    # Handle keyboard input
     def keyPressEvent(self, e):
+        # Digit buttons
         if e.key() == Qt.Key_0:
             self.addDigit("0")
         elif e.key() == Qt.Key_1:
@@ -69,28 +73,40 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.addDigit("8")
         elif e.key() == Qt.Key_9:
             self.addDigit("9")
-        elif e.key() == Qt.Key_Backspace or e.key() == Qt.Key_Delete:
-            self.deleteDigit()
-        elif e.key() == Qt.Key_Plus:
-            self.addFunction("+")
-        elif e.key() == Qt.Key_Minus:
-            self.addFunction("-")
-        elif e.key() == Qt.Key_Asterisk or e.key() == Qt.Key_X:
-            self.addFunction("×")
-        elif e.key() == Qt.Key_Slash:
-            self.addFunction("/")
-        elif e.key() == Qt.Key_L:
-            self.addFunction("ln(")
-        elif e.key() == Qt.Key_R:
-            self.addFunction("√(")
+
+        # Decimal point button
         elif e.key() == Qt.Key_Period or e.key() == Qt.Key_Comma:
             self.addDecimal()
-        elif e.key() == Qt.Key_Equal or e.key() == Qt.Key_Enter:
-            self.finishCalculation()
+        
+        # Bracket buttons
         elif e.key() == Qt.Key_ParenLeft:
             self.addBracket("(")
         elif e.key() == Qt.Key_ParenRight:
             self.addBracket(")")
+
+        # Function buttons
+        elif e.key() == Qt.Key_L:
+            self.addFunction("ln(")
+        elif e.key() == Qt.Key_Exclam:
+            self.addFunction("!")
+        elif e.key() == Qt.Key_R:
+            self.addFunction("√(")
+        elif e.key() == Qt.Key_AsciiCircum:
+            self.addFunction("^")
+        elif e.key() == Qt.Key_Slash:
+            self.addFunction("/")
+        elif e.key() == Qt.Key_Asterisk or e.key() == Qt.Key_X:
+            self.addFunction("×")
+        elif e.key() == Qt.Key_Minus:
+            self.addFunction("-")
+        elif e.key() == Qt.Key_Plus:
+            self.addFunction("+")
+            
+        # Other buttons
+        elif e.key() == Qt.Key_Backspace or e.key() == Qt.Key_Delete:
+            self.deleteDigit()
+        elif e.key() == Qt.Key_Equal or e.key() == Qt.Key_Enter:
+            self.finishCalculation()
         elif e.key() == Qt.Key_Escape:
             self.clearAll()
         
