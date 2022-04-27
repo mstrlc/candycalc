@@ -55,3 +55,4 @@ compile_commands.json
 # Python pytest cache
 __pycache__/
 .pytest_cache/
+.qt_for_python/uic/mainwindow.py

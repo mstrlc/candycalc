@@ -29,7 +29,7 @@ class Ui_mainWindow(object):
         icon.addPixmap(QtGui.QPixmap("icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         mainWindow.setWindowIcon(icon)
         mainWindow.setStyleSheet("QLabel#labelMain {\n"
-"    font: 52pt \"SF Mono\";\n"
+"    font: 46pt ;\n"
 "    font-weight: 1000;\n"
 "    color: #1D1D1D;\n"
 "    padding-top: 5px;\n"
@@ -37,14 +37,14 @@ class Ui_mainWindow(object):
 "}\n"
 "\n"
 "QLabel#labelSecond {\n"
-"    font: 22pt \"SF Mono\";\n"
+"    font: 22pt;\n"
 "    font-weight: 400;\n"
 "    color: #374F9A;\n"
 "    padding-top: 20px;\n"
 "}\n"
 "\n"
 "QPushButton {\n"
-"    font: 22pt \"SF Mono\";\n"
+"    font: 20pt;\n"
 "    color: #FFFFFF;\n"
 "    font-weight: 600;\n"
 "    background-color: #2B3452;\n"
@@ -57,7 +57,7 @@ class Ui_mainWindow(object):
 "    background-color: #22283A;\n"
 "}\n"
 "QFrame {\n"
-"    background-color: #FFFFFF;\n"
+"    background-color: #F5F5F5;\n"
 "}\n"
 "")
         mainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
@@ -539,10 +539,10 @@ class Ui_mainWindow(object):
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "candyCalc"))
-        self.pushButtonFact.setText(_translate("mainWindow", "!"))
+        self.pushButtonFact.setText(_translate("mainWindow", "x!"))
         self.pushButtonRBrac.setText(_translate("mainWindow", ")"))
         self.pushButtonEq.setText(_translate("mainWindow", "="))
-        self.pushButtonCE.setText(_translate("mainWindow", "CE"))
+        self.pushButtonCE.setText(_translate("mainWindow", "CLR"))
         self.pushButtonDel.setText(_translate("mainWindow", "DEL"))
         self.pushButton3.setText(_translate("mainWindow", "3"))
         self.pushButtonLBrac.setText(_translate("mainWindow", "("))
@@ -555,13 +555,13 @@ class Ui_mainWindow(object):
         self.pushButtonDec.setText(_translate("mainWindow", "."))
         self.pushButton4.setText(_translate("mainWindow", "4"))
         self.pushButton9.setText(_translate("mainWindow", "9"))
-        self.pushButtonRoot.setText(_translate("mainWindow", "√"))
+        self.pushButtonRoot.setText(_translate("mainWindow", "√x"))
         self.pushButtonDiv.setText(_translate("mainWindow", "/"))
         self.pushButtonMin.setText(_translate("mainWindow", "–"))
         self.pushButton6.setText(_translate("mainWindow", "6"))
-        self.pushButtonExp.setText(_translate("mainWindow", "^"))
+        self.pushButtonExp.setText(_translate("mainWindow", "x^n"))
         self.pushButtonMul.setText(_translate("mainWindow", "×"))
-        self.pushButtonLn.setText(_translate("mainWindow", "ln"))
+        self.pushButtonLn.setText(_translate("mainWindow", "ln(x)"))
         self.pushButton5.setText(_translate("mainWindow", "5"))
         self.menuHelp.setTitle(_translate("mainWindow", "Help"))
         self.actionOpen_user_guide.setText(_translate("mainWindow", "Open user guide"))
