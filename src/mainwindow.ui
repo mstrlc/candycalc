@@ -48,7 +48,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLabel#labelMain {
-	font: 52pt &quot;SF Mono&quot;;
+	font: 46pt ;
 	font-weight: 1000;
 	color: #1D1D1D;
 	padding-top: 5px;
@@ -56,14 +56,14 @@
 }
 
 QLabel#labelSecond {
-	font: 22pt &quot;SF Mono&quot;;
+	font: 22pt;
 	font-weight: 400;
 	color: #374F9A;
 	padding-top: 20px;
 }
 
 QPushButton {
-	font: 22pt &quot;SF Mono&quot;;
+	font: 20pt;
 	color: #FFFFFF;
 	font-weight: 600;
 	background-color: #2B3452;
@@ -1090,12 +1090,12 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonsNum">
+  <buttongroup name="buttonsOper">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="buttonsOper">
+  <buttongroup name="buttonsNum">
    <property name="exclusive">
     <bool>false</bool>
    </property>
