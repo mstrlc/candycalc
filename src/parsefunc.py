@@ -58,7 +58,7 @@ def solve_expr(expr):
                         del expr[index+1:expr.index(')')+1]
 
                     elif token == "^":
-                        expr[index] = mathlib.power(float(expr[index-1]),float(expr[index+1]))
+                        expr[index] = mathlib.power(float(expr[index-1]),int(expr[index+1]))
                         del expr[index+1]
                         del expr[index-1]
 
