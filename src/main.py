@@ -158,15 +158,23 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         # Other buttons
         elif e.key() == Qt.Key_Backspace or e.key() == Qt.Key_Delete:
             self.deleteDigit()
-        elif e.key() == Qt.Key_Equal or e.key() == Qt.Key_Enter:
+        elif e.key() == Qt.Key_Equal or e.key() == Qt.Key_Enter or e.key() == Qt.Key_Return:
             self.finishCalculation()
         elif e.key() == Qt.Key_Escape:
             self.clearAll()
-    
+
+    ## @brief Check if display contains error and handle it
+    #
+    # If user tries to input something while an error is on the display, the display is cleared before the new input
+    def handleError(self):
+        if("error" in self.labelMain.text().lower() or "Num too big" in self.labelMain.text()):
+            self.labelMain.setText("")
+
     ## @brief Add a digit to the display
     #
     # @param digit Digit to be added to the display
     def addDigit(self, digit): # Add digit to the display
+        self.handleError()
         self.labelMain.setText(self.labelMain.text() + digit)
 
     ## @brief Add a decimal point to the display
@@ -175,6 +183,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # @todo Check if a decimal point is already present in the current number
     def addDecimal(self): # Add decimal point to the display, only if the last character is a digit
+        self.handleError()
         if(len(self.labelMain.text()) == 0):
             self.labelMain.setText(".")
         elif(self.labelMain.text()[-1].isdigit()):
@@ -188,6 +197,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # @param bracket Bracket to be added (either "(" or ")")
     def addBracket(self, bracket): # Add a bracket to the display
+        self.handleError()
         if(bracket == "("): # Add opening bracket only if the the previous bracket was closed
             if(self.labelMain.text().count("(") == self.labelMain.text().count(")")):
                 self.labelMain.setText(self.labelMain.text() + bracket)
@@ -201,8 +211,10 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # If the last entered character was also a fucntion character, replace it with the currently pressed one, so there can't be two function characters in a row
     # If the function is root, change the text on the button to "n√x" to better indicate the function
     #
+    # @todo Check if a function character is already present in the display and replace it (commented out code was trying to acomplish this), now handled by parser
     # @param function Function character to be added
     def addFunction(self, function):
+        self.handleError()
         self.labelMain.setText(self.labelMain.text() + function)
         # if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
         #     self.deleteDigit()
@@ -221,6 +233,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # If the deleted character was root, the root button is reset to its default value
     def deleteDigit(self):
+        self.handleError()
         if(len(self.labelMain.text()) > 0):
             if(self.labelMain.text()[-1] == "√"):
                 self.pushButtonRoot.setText("√x")
@@ -244,8 +257,17 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
         try:
             self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
+        except ValueError:
+            self.labelMain.setText("Error")
+        except ZeroDivisionError:
+            self.labelMain.setText("Math error")
+        except OverflowError:
+            self.labelMain.setText("Num too big")
+        except SyntaxError:
+            self.labelMain.setText("Syntax error")
         except:
             self.labelMain.setText("Error")
+
 
 ## @brief Main function
 #
