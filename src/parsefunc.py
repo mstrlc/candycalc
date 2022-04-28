@@ -179,8 +179,9 @@ def parse_input(input):
             # reseting flag, confirmation of 'n' after
             if str[i] == 'n':
                 flag = False
-                if parsed[len(parsed)-1].isnumeric():
-                    parsed.insert(i,'×')
+                if len(parsed):
+                    if parsed[len(parsed)-1].isnumeric():
+                        parsed.insert(i,'×')
                 parsed.append("ln")
             else:
                 raise SyntaxError()
@@ -275,21 +276,13 @@ def get_result(input):
     result = float(solve_expr(parse_input(input)))
 
     # check lenght of the number
-    lenght = len(str(result))
-    
-        #raise OverflowError()
+    lenght = len(str(int(result)))
+    #if lenght > 11:
+    #    raise OverflowError()
 
     # decide on it's type and representation
     if result % 1 == 0:
-        if lenght > 11:
-            result = "{:e}".format(result)
-            return result
-        else:
             return int(result)
     else:
-        if lenght > 11:
-            result = "{:e}".format(result)
-            return result
-        else:
             return round(result, 12-lenght)
 #end of get_result func
