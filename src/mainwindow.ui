@@ -3,14 +3,14 @@
  <class>mainWindow</class>
  <widget class="QMainWindow" name="mainWindow">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>530</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,13 +22,13 @@
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>530</height>
+    <height>550</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>530</height>
+    <height>550</height>
    </size>
   </property>
   <property name="palette">
@@ -48,16 +48,16 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLabel#labelMain {
-	font: 46pt ;
-	font-weight: 1000;
+	font: 36pt;
+	font-weight: 700;
 	color: #1D1D1D;
 	padding-top: 5px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 
 QLabel#labelSecond {
-	font: 22pt;
-	font-weight: 400;
+	font: 20pt;
+	font-weight: 500;
 	color: #374F9A;
 	padding-top: 20px;
 }
@@ -65,7 +65,7 @@ QLabel#labelSecond {
 QPushButton {
 	font: 20pt;
 	color: #FFFFFF;
-	font-weight: 600;
+	font-weight: 500;
 	background-color: #2B3452;
 	border-style: solid;
 	border-width: 1px;
@@ -1070,7 +1070,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>420</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -1090,12 +1090,12 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonsOper">
+  <buttongroup name="buttonsNum">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="buttonsNum">
+  <buttongroup name="buttonsOper">
    <property name="exclusive">
     <bool>false</bool>
    </property>
