@@ -12,7 +12,7 @@ currentDirectory = os.path.dirname(os.path.realpath(__file__))
 
 try:
     from ctypes import windll  # Only exists on Windows.
-    myappid = 'mycompany.myproduct.subproduct.version'
+    myappid = 'candycalc.1.0.0'
     windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 except ImportError:
     pass
