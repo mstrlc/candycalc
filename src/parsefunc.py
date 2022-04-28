@@ -277,12 +277,12 @@ def get_result(input):
 
     # check lenght of the number
     lenght = len(str(int(result)))
-    #if lenght > 11:
-    #    raise OverflowError()
+    if lenght > 12:
+        raise OverflowError()
 
     # decide on it's type and representation
     if result % 1 == 0:
             return int(result)
     else:
-            return round(result, 12-lenght)
+            return round(result, 13-lenght)
 #end of get_result func
