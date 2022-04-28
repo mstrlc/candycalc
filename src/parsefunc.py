@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from yaml import parse
 import mathlib
 import sys
 
