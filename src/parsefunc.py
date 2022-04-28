@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from cgitb import reset
 import mathlib
 import sys
 #sys.tracebacklimit=0
@@ -21,6 +22,8 @@ precedence = [["(",")"],["ln"], ["!"], ["√" ,"^"], ["×", "/"], ["+", "-"]] #s
 def solve_expr(expr):
     if len(expr) == 1:
         return expr[0]
+    if len(expr) == 0:
+        return 0
 
     for op_set in precedence:
         index = 0
@@ -32,6 +35,8 @@ def solve_expr(expr):
                 if token in '(':
                     help = []
                     help = expr[index+1:expr.index(')')]
+                    if len(help) == 0:
+                        return 0
                     if index != 0 and expr[index-1]=="√":
                         index+=1
                     elif len(help) != 0:
@@ -198,6 +203,11 @@ def parse_input(input):
 
 #simple getr_result func 
 def get_result(input):
-    #call of input/expr parsing func
-    return solve_expr(parse_input(input))
+    #call of input/expr parsing func    
+    result = solve_expr(parse_input(input))
+    lenght = len(str(int(result)))
+    if result % 1 == 0:
+        return int(result)
+    else:
+        return round(result, 12-lenght)
 
