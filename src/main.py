@@ -215,26 +215,26 @@ class mainWindow(QMainWindow, Ui_mainWindow):
 
     ## @brief Add a function character to the display
     #
-    # If the last entered character was also a fucntion character, replace it with the currently pressed one, so there can't be two function characters in a row
     # If the function is root, change the text on the button to "n√x" to better indicate the function
     #
     # @todo Check if a function character is already present in the display and replace it (commented out code was trying to acomplish this), now handled by parser
     # @param function Function character to be added
     def addFunction(self, function):
         self.handleError()
-        self.labelMain.setText(self.labelMain.text() + function)
+        if(function != "√("):
+            self.labelMain.setText(self.labelMain.text() + function)
+        elif(function == "√("):
+            if(self.pushButtonRoot.text() == "√x"):
+                self.labelMain.setText(self.labelMain.text() + "√(")
+                self.pushButtonRoot.setText("ⁿ√x")
+            elif(self.pushButtonRoot.text() == "ⁿ√x"):
+                self.labelMain.setText(self.labelMain.text() + ",")
+                self.pushButtonRoot.setText("√x")
         # if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
         #     self.deleteDigit()
         #     self.labelMain.setText(self.labelMain.text() + function)
         # elif(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
         #     self.labelMain.setText(self.labelMain.text() + function)
-        # elif(function == "√("):
-        #     if(self.pushButtonRoot.text() == "√x"):
-        #         self.labelMain.setText(self.labelMain.text() + "√(")
-        #         self.pushButtonRoot.setText("ⁿ√x")
-        #     elif(self.pushButtonRoot.text() == "ⁿ√x"):
-        #         self.labelMain.setText(self.labelMain.text() + ",")
-        #         self.pushButtonRoot.setText("√x")
 
     ## @brief Delete the last digit from the display
     #
