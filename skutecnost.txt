@@ -1,0 +1,25 @@
+Terminy
+Po vytvoreni Discord serveru a repozitare jsme na projektu moc nepracovali.
+Vetsinou jsme uprednostnovali projekty do jinych predmetu, ktere mely blizsi
+deadlines. Realne jsme na projektu zacali pracovat zhruba tyden pred terminem
+odevzdani. Ackoliv jsme vsechno zdarne stihli, bohuzel jsme nenaimplementovali
+nejake funkce navic nad ramec zadani, na ktere nezbyl cas. Terminu jsme se
+tedy bohuzel vubec nedrzeli.
+
+Prideleni ukolu
+Kdyz jsme na projektu zacli pracovat dle puvodne naplanovaneho rozdeleni
+ukolu, uvedomili jsme si ze to nebylo rozdeleno nejlepe. Vzhledem k tomu,
+ze na sebe nektere casti uzce navazuji, je nesmyslne, aby napriklad
+intalator a odinstalator delal nekdo, kdo nepsal hlavni kod programu.
+Rozdeleni jsme si tedy za behu upravovali tak, aby kazdy delal to, cemu
+rozumi a souvisi s jeho ostatnimi pridelenymi castmi.
+
+Komunikace
+Discord jsme ke komunikaci vyuzivali hojne, i mimo tema projektu v
+mistnosti offtopic. Na Discordu jsme vsichni kazdodenne aktivni,
+takze nebyl problem se kontaktovat behem nekolika hodin. Oproti planu,
+kde jsme pocitali s hovory kazdy tyden, hovory probihaly mozna trikrat
+opet v poslednim tydnu pred deadlinem. Platformu Trello jsme opustili a
+presli jsme na GitHub issues, na cemz bylo pohodlne, ze bylo vse na
+jednom miste, navic jsme meli na Discordu bota, ktery informoval o vsech
+zmenach na GitHubu, vcetne issues a podobneho.
