@@ -24,8 +24,11 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.setupFonts()
         self.connectButtons()
 
-    ## @brief Set the default GUI font
+    ## @brief Set the default font
     #
+    # Add the custom font to font database
+    # Set the font for every GUI element
+    # Initialize the labels' text so the GUI resizes appropriately for text sizes
     def setupFonts(self):
         QFontDatabase.addApplicationFont("fonts/FiraCode-Bold.ttf")
         QFontDatabase.addApplicationFont("fonts/FiraCode-Medium.ttf")
