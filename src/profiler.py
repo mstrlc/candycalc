@@ -1,7 +1,8 @@
 ##
-#   @file profiler.py
-#   @brief This programme is used for calculation of standard deviation (sample).
-#          It was created for profiling purposes.
+#  @file profiler.py
+#  @package profiler
+#  @brief This programme is used for calculation of standard deviation (sample).
+#  It was created for profiling purposes.
 
 from mathlib import divide, add, subtract, multiply, power, sqrt
 import cProfile

@@ -1,3 +1,8 @@
+##
+#  @file main.py
+#  @package main
+# @brief Main file for the project
+
 from signal import signal
 import os
 import sys
@@ -8,6 +13,7 @@ from pip import main
 from ui import Ui_mainWindow
 import parsefunc
 
+# Set current directory to the directory of this file
 currentDirectory = os.path.dirname(os.path.realpath(__file__))
 
 try:
@@ -17,8 +23,8 @@ try:
 except ImportError:
     pass
 
-## @package candyCalc
-#  @brief   Main GUI window of the application
+##  
+#   @brief   Main GUI window of the application
 class mainWindow(QMainWindow, Ui_mainWindow):
 
     ## @brief   Main window constructor

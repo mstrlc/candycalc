@@ -1,3 +1,9 @@
+##
+#  @file mathlib.py
+#  @package mathlib
+#  @brief Mathematical library
+
+
 from math import log
 
 
