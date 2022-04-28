@@ -3,7 +3,7 @@ import mathlib
 import sys
 
 ## @package parsefunc
-# @brieef parsefunc is a module that handles input parsing for Candycalc
+# @brief parsefunc is a module that handles input parsing for Candycalc
 #
 # To use this module either use:
 # parse_input(input) for parsing input to expression
@@ -161,7 +161,7 @@ def parse_input(input):
             if add != "":
                 parsed.append(add)
                 add = ""
-            if item == '√':
+            if item == '√' and i != 0:
                 if parsed[len(parsed)-1].isnumeric():
                     parsed.insert(i,'×')
             parsed.append(item)
@@ -273,7 +273,7 @@ def get_parsed_input(input):
 def get_result(input):
     # call of input/expr parsing func    
     result = float(solve_expr(parse_input(input)))
-    
+
     # check lenght of the number
     lenght = len(str(result))
     
