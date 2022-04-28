@@ -56,7 +56,7 @@ Nebo rucne pomoci nasledujicich prikazu:
     python3 -m PyInstaller pyinstaller.spec
 
 Tentoprogram vytvori slozku `dist`, ve ktere se mimo knihoven a datovych souboru bude nachazet
-soubor `candycalc` na Ubuntu nebo `candycalc.exe` na Windows.
+soubor `candycalc` na Ubuntu nebo `candycalc.exe` na Windows. Vsechny soubory v teto slozce jsou potrebne k behu programu.
 
 Instalace
 ---------
