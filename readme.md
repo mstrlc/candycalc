@@ -22,7 +22,8 @@ Zavislosti
 ----------
 
 Nasledujici prikazy jsou pro Ubuntu Linux. Na Windows lze pouzit obdobne prikazy.
-Pro uspesne rucni spusteni je potreba zavislosti `python3` a `PyQt5`. Pro nainstalovani je potreba i `pip3`.
+Pro uspesne rucni spusteni je potreba zavislosti `python3` a `pyqt5`.
+Pro sestaveni spustitelnych soboru je potreba `pip` a `pyinstaller`.
 Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
 
     make dependencies
@@ -30,9 +31,9 @@ Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
 Nebo rucne pomoci nasledujicich prikazu:
 
     apt install python3
-    apt install pip3
-    pip3 install PyQt5
-
+    apt install python3-pyqt5
+    apt install pip
+    pip install pyinstaller
 
 Rucni spusteni
 --------------
