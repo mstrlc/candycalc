@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from yaml import parse
 import mathlib
 import sys
 
@@ -33,8 +34,13 @@ def solve_expr(expr):
             if token in op_set:
 
                 if token in '(':
+                    
                     help = []
-                    help = expr[index+1:expr.index(')')]
+                    if expr[index+1] in "+-":
+                        help.append(0)
+
+                    help += expr[index+1:expr.index(')')]
+                    print(help)
                     if len(help) == 0:
                         return 0
                     if index != 0 and expr[index-1]=="√":
@@ -144,7 +150,7 @@ def parse_input(input):
         elif item in operators:
             # add preceeding number to parsed list
             if i!= 0 and add=="":
-                if parsed[-1] != '!':
+                if parsed[-1] not in '(!':
                     raise SyntaxError()
             if add != "":
                 parsed.append(add)
@@ -164,6 +170,8 @@ def parse_input(input):
             # reseting flag, confirmation of 'n' after
             if str[i] == 'n':
                 flag = False
+                if parsed[len(parsed)-1].isnumeric():
+                    parsed.insert(i,'×')
                 parsed.append("ln")
             else:
                 raise SyntaxError()
@@ -215,6 +223,23 @@ def parse_input(input):
         parsed.append(')')
     return parsed
 #end of parse_input func
+
+
+def get_parsed_input(input):
+    parsed=parse_input(input)
+    string=""
+    for i, item in enumerate(parsed):
+        if item.isnumeric() and item != '0':
+            parsed.insert(i,round(int(item)))
+            del parsed[i+1]
+        elif item == '(':
+            if parsed[i+1] == ')':
+                print(parsed[i+1])
+                parsed.insert(i,int('0'))
+                break
+    for item in parsed:
+        string+=str(item)
+    return string
 
 #simple getr_result func 
 def get_result(input):
