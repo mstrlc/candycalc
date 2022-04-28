@@ -1,8 +1,14 @@
+##
+#   @file mathlib_test.py
+#   @brief Tests for implementation of library 'mathlib'
+
 import mathlib
 import pytest
 
 
-# test for add function
+##
+# @brief Tests for 'add' function
+
 def test_add():
     assert mathlib.add(10, 5) == 15
     assert mathlib.add(10, -5) == 5
@@ -24,7 +30,9 @@ def test_add():
         mathlib.add()
 
 
-# test for subtract function with errors
+##
+# @brief Tests for 'subtract' function
+
 def test_subtract():
     assert mathlib.subtract(10, 5) == 5
     assert mathlib.subtract(10, -5) == 15
@@ -47,7 +55,9 @@ def test_subtract():
         mathlib.subtract()
 
 
-# test for multiply function
+##
+# @brief Tests for 'multiply' function
+
 def test_multiply():
     assert mathlib.multiply(10, 5) == 50
     assert mathlib.multiply(10, -5) == -50
@@ -70,7 +80,9 @@ def test_multiply():
         mathlib.multiply()
 
 
-# test for divide function
+##
+# @brief Tests for 'divide' function
+
 def test_divide():
     assert mathlib.divide(10, 5) == 2
     assert mathlib.divide(10, -5) == -2
@@ -93,7 +105,9 @@ def test_divide():
         mathlib.divide()
 
 
-# test for factorial function
+##
+# @brief Tests for 'factorial' function
+
 def test_factorial():
     assert mathlib.factorial(0) == 1
     assert mathlib.factorial(1) == 1
@@ -110,7 +124,9 @@ def test_factorial():
         mathlib.factorial(-10)
 
 
-# test for power function with natural exponent
+##
+# @brief Tests for 'power' function with natural exponent
+
 def test_power():
     assert mathlib.power(10, 0) == 1
     assert mathlib.power(3, 2) == 9
@@ -125,7 +141,9 @@ def test_power():
         mathlib.power()
 
 
-# test for nth root function
+##
+# @brief Tests for 'nroot' function
+
 def test_nroot():
     assert mathlib.nroot(0, 4) == 0
     assert mathlib.nroot(5, 2) == 2.23606797749979
@@ -142,7 +160,9 @@ def test_nroot():
         mathlib.nroot()
 
 
-# test for natural logarithm function
+##
+# @brief Tests for 'ln' function
+
 def test_ln():
     assert mathlib.ln(4) == 1.3862943611198906
     assert mathlib.ln(10.24135) == 2.3264334468592685
