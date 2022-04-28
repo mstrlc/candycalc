@@ -268,12 +268,16 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.labelSecond.setText(parsefunc.get_parsed_input(self.labelMain.text())) # Copy the expression to the second display
             self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
         except ValueError:
-            self.labelMain.setText("Error")
+            self.labelSecond.setText(self.labelMain.Text())
+            self.labelMain.setText("Value error")
         except ZeroDivisionError:
+            self.labelSecond.setText(self.labelMain.Text())
             self.labelMain.setText("Math error")
         except OverflowError:
+            self.labelSecond.setText(self.labelMain.Text())
             self.labelMain.setText("Num too big")
         except SyntaxError:
+            self.labelSecond.setText(self.labelMain.Text())
             self.labelMain.setText("Syntax error")
         except:
             self.labelMain.setText("Error")
