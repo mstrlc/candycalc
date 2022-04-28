@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import mathlib
+import sys
+#sys.tracebacklimit=0
 parentheses = ["(", ")"] #supported parentheses
 operators = ["ln", "!", "√", "^", "×", "/", "+", "-"] #supported operators
 precedence = [["(",")"],["ln"], ["!"], ["√" ,"^"], ["×", "/"], ["+", "-"]] #set precendence of operatos
@@ -17,21 +19,71 @@ precedence = [["(",")"],["ln"], ["!"], ["√" ,"^"], ["×", "/"], ["+", "-"]] #s
 #TODO: after merge adjust the funcion for mathlib operations
 
 def solve_expr(expr):
-    
+    if len(expr) == 1:
+        return expr[0]
 
-    result=[]
-    for operator_set in precedence:
-        for i ,token in enumerate(expr):
-            if token in operator_set:
-                if token == '(':
-                    close = expr.index(')')
-                    result = solve_expr(expr[i+1:close])
-                elif token == "+":
-                    result = float(expr[i-1])+float(expr[i+1])
-                elif token == "-":
-                    result = float(expr[i-1])-float(expr[i+1])
-    return(result)
+    for op_set in precedence:
+        index = 0
 
+        while len(expr) > index:
+            token = expr[index]
+            if token in op_set:
+
+                if token in '(':
+                    help = []
+                    help = expr[index+1:expr.index(')')]
+                    if index != 0 and expr[index-1]=="√":
+                        index+=1
+                    elif len(help) != 0:
+                        expr[index] = solve_expr(help)
+                        del expr[index+1:expr.index(')')+1]
+
+                if token in operators:
+
+                    if token == "ln":
+                        expr[index] = mathlib.ln(float(expr[index+1]))
+                        del expr[index+1]
+
+                    elif token == "!":
+                        expr[index] = mathlib.factorial(int(expr[index-1]))
+                        del expr[index-1]
+
+                    elif token == "√":
+                        print("haha")
+                        if ',' in expr[index+1:expr.index(')')]:
+                            print(expr[index+2])
+                            expr[index] = mathlib.nroot(float(expr[index+2]), int(expr[index+4]))
+                        else:
+                            expr[index] = mathlib.nroot(float(expr[index+2]),2)
+                        del expr[index+1:expr.index(')')+1]
+
+                    elif token == "^":
+                        expr[index] = mathlib.power(float(expr[index-1]),float(expr[index+1]))
+                        del expr[index+1]
+                        del expr[index-1]
+
+                    elif token == "×":
+                        expr[index] = mathlib.multiply(float(expr[index-1]),float(expr[index+1]))
+                        del expr[index+1]
+                        del expr[index-1]
+                    
+                    elif token == "/":
+                        expr[index] = mathlib.divide(float(expr[index-1]),float(expr[index+1]))
+                        del expr[index+1]
+                        del expr[index-1]
+
+                    elif token == "+":
+                        expr[index] = mathlib.add(float(expr[index-1]),float(expr[index+1]))
+                        del expr[index+1]
+                        del expr[index-1]
+
+                    elif token == "-":
+                        expr[index] = mathlib.subtract(float(expr[index-1]),float(expr[index+1]))
+                        del expr[index+1]
+                        del expr[index-1]
+
+            index+=1
+    return solve_expr(expr)
 
 def parse_input(input):
     '''
@@ -76,9 +128,18 @@ def parse_input(input):
             else:
                 raise Exception("Input error")
 
+        elif item == ',':
+            if add != "":
+                parsed.append(add)
+                add=""
+            parsed.append(item)
+
         # operator handling
         elif item in operators:
             # add preceeding number to parsed list
+            if i!= 0 and add=="":
+                if parsed[-1] != '!':
+                    raise Exception("Input error")
             if add != "":
                 parsed.append(add)
                 add = ""
@@ -122,7 +183,16 @@ def parse_input(input):
     # check the first item for operators
     if len(parsed):
         if parsed[0] in operators:
-            raise Exception("Input error")
+            if parsed[0] in "-+":
+                parsed.insert(0,"0")
+            elif parsed[0] in "√ln":
+                if len(parsed) < 1: 
+                    raise Exception("Input error")
+            else:
+                raise Exception("Input error")
+        if parsed[len(parsed)-1] in operators:
+            if parsed[len(parsed)-1] != '!':
+                raise Exception("Input error")
     return parsed
 #end of parse_input func
 
