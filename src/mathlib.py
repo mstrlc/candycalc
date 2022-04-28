@@ -63,13 +63,15 @@ def divide(a,b):
 # @param a size of the factorial
 #
 # @return Factorial of number a
-def factorial(a):
+def factorial(a): 
     if type(a) == str:
         raise TypeError
     if a<0:
         raise ValueError("Math Err")
     b=1
     for i in range(a):
+        if(abs(b) > (2 ** 128 - 1)):
+            raise OverflowError() 
         b*=(i+1)
     return b
 
