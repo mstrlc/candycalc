@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from cgitb import reset
+
+from yaml import parse
 import mathlib
 import sys
+
 #sys.tracebacklimit=0
 parentheses = ["(", ")"] #supported parentheses
 operators = ["ln", "!", "√", "^", "×", "/", "+", "-"] #supported operators
@@ -27,7 +29,7 @@ def solve_expr(expr):
 
     for op_set in precedence:
         index = 0
-
+        
         while len(expr) > index:
             token = expr[index]
             if token in op_set:
@@ -52,6 +54,7 @@ def solve_expr(expr):
                     elif token == "!":
                         expr[index] = mathlib.factorial(int(expr[index-1]))
                         del expr[index-1]
+                        print(expr)
 
                     elif token == "√":
                         print("haha")
@@ -121,7 +124,7 @@ def parse_input(input):
 
             # only one '.' per number
             if '.' in add:
-                raise Exception("Input error")
+                raise SyntaxError()
             # '.' with no preceeding number
             # eg. "".5" -> "0.5"
             elif add == "":
@@ -131,7 +134,7 @@ def parse_input(input):
             elif add != "":   
                 add += item 
             else:
-                raise Exception("Input error")
+                raise SyntaxError()
 
         elif item == ',':
             if add != "":
@@ -144,7 +147,7 @@ def parse_input(input):
             # add preceeding number to parsed list
             if i!= 0 and add=="":
                 if parsed[-1] != '!':
-                    raise Exception("Input error")
+                    raise SyntaxError()
             if add != "":
                 parsed.append(add)
                 add = ""
@@ -165,7 +168,7 @@ def parse_input(input):
                 flag = False
                 parsed.append("ln")
             else:
-                raise Exception("Input error")
+                raise SyntaxError()
 
         #parentheses handling
         elif item in parentheses:
@@ -179,7 +182,7 @@ def parse_input(input):
                 add = ""
             parsed.append(item)
         else:
-            raise Exception("Input error")
+            raise SyntaxError()
 
     # add leftover number to parsed list    
     if add != "":
@@ -191,23 +194,40 @@ def parse_input(input):
             if parsed[0] in "-+":
                 parsed.insert(0,"0")
             elif parsed[0] in "√ln":
-                if len(parsed) < 1: 
-                    raise Exception("Input error")
+                if len(parsed) <= 1: 
+                    raise SyntaxError()
             else:
-                raise Exception("Input error")
+                raise SyntaxError()
         if parsed[len(parsed)-1] in operators:
             if parsed[len(parsed)-1] != '!':
-                raise Exception("Input error")
+                raise SyntaxError()
+
+    open = 0
+    close = 0            
+    for i, check in enumerate(parsed):
+        if check == '(':
+            open+=1
+        elif check == ')':
+            close+=1
+        elif check == '!':
+            if i!=len(parsed)-1:
+                if parsed[i-1].isnumeric() and parsed[i+1].isnumeric():
+                    parsed.insert(i+1,'×')
+    for i in range(open-close):
+        parsed.append(')')
     return parsed
 #end of parse_input func
 
 #simple getr_result func 
 def get_result(input):
     #call of input/expr parsing func    
-    result = solve_expr(parse_input(input))
+    result = float(solve_expr(parse_input(input)))
+
     lenght = len(str(int(result)))
+    if lenght > 11:
+        raise OverflowError()
+
     if result % 1 == 0:
         return int(result)
     else:
         return round(result, 12-lenght)
-
