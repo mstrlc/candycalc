@@ -70,12 +70,10 @@ def solve_expr(expr):
                     elif token == "!":
                         expr[index] = mathlib.factorial(int(expr[index-1]))
                         del expr[index-1]
-                        print(expr)
 
                     elif token == "√":
                         # checking wheter the n of root is present in the list
                         if ',' in expr[index+1:expr.index(')')]:
-                            print(expr[index+2])
                             expr[index] = mathlib.nroot(float(expr[index+2]), int(expr[index+4]))
                         else:
                             expr[index] = mathlib.nroot(float(expr[index+2]),2)
@@ -163,6 +161,9 @@ def parse_input(input):
             if add != "":
                 parsed.append(add)
                 add = ""
+            if item == '√':
+                if parsed[len(parsed)-1].isnumeric():
+                    parsed.insert(i,'×')
             parsed.append(item)
 
         # ln handling
@@ -254,7 +255,6 @@ def get_parsed_input(input):
         # "()" -> "(0)"
         elif item == '(':
             if parsed[i+1] == ')':
-                print(parsed[i+1])
                 parsed.insert(i,int('0'))
                 break
 
@@ -273,15 +273,23 @@ def get_parsed_input(input):
 def get_result(input):
     # call of input/expr parsing func    
     result = float(solve_expr(parse_input(input)))
-
+    
     # check lenght of the number
-    lenght = len(str(int(result)))
-    if lenght > 11:
-        raise OverflowError()
+    lenght = len(str(result))
+    
+        #raise OverflowError()
 
     # decide on it's type and representation
     if result % 1 == 0:
-        return int(result)
+        if lenght > 11:
+            result = "{:e}".format(result)
+            return result
+        else:
+            return int(result)
     else:
-        return round(result, 12-lenght)
+        if lenght > 11:
+            result = "{:e}".format(result)
+            return result
+        else:
+            return round(result, 12-lenght)
 #end of get_result func
