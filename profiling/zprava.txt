@@ -1,0 +1,7 @@
+Na profilovanie nami vytvoreného programu pre výpočet smerodatnej odchylky bol využitý modul cProfile.
+Program sme profilovali na dátach o veľkosti 10, 100 a 1000 číselných hodnôt.
+
+Na výsledkoch je vidieť, že funkcie našej matematickej knižnice nezabrali dostatok času na to, aby boli zaregistrované vo výstupoch z cProfile, čo naznačuje ich efektivitu a malú potrebu optimalizácie. Je však zjavné, že funkcie add a power zaznamenali najvačší počet volaní. 
+
+V prípade budúcej optimalizácie by bolo vhodné zamerať sa na tieto dve funkcie, možným riešením by tiež bolo prepísať knižnicu (program) do jazyka C.
+
