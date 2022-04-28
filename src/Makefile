@@ -18,7 +18,7 @@ clean:
 	rm -rf ../profiling/__pycache__
 	rm -rf ../src/__pycache__
 	rm -rf ../src/.pytest_cache
-	rm -rf ../src/dest
+	rm -rf ../src/dist
 	rm -rf ../src/build
 
 test: mathlib_test.py
