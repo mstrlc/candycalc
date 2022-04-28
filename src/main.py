@@ -1,11 +1,13 @@
 from signal import signal
-import string
+import os
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from pip import main
 from ui import Ui_mainWindow
 import parsefunc
+
+currentDirectory = os.path.dirname(os.path.realpath(__file__))
 
 ## @package candyCalc
 #  @brief   Main GUI window of the application
@@ -175,9 +177,10 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # If the deleted character was root, the root button is reset to its default value
     def deleteDigit(self):
-        if(self.labelMain.text()[-1] == "√"):
-            self.pushButtonRoot.setText("√x")
-        self.labelMain.setText(self.labelMain.text()[:-1])
+        if(len(self.labelMain.text()) > 0):
+            if(self.labelMain.text()[-1] == "√"):
+                self.pushButtonRoot.setText("√x")
+            self.labelMain.setText(self.labelMain.text()[:-1])
 
     ## @brief Clear the display
     #
