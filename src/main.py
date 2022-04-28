@@ -261,8 +261,8 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the result to be the text of main label
     # Set the calculation to be the text of the secondary label
     def finishCalculation(self): # Calculate the expression
-        self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
         try:
+            self.labelSecond.setText(parsefunc.get_parsed_input(self.labelMain.text())) # Copy the expression to the second display
             self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
         except ValueError:
             self.labelMain.setText("Error")
