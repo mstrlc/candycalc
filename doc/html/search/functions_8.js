@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parse_5finput_0',['parse_input',['../d9/d65/namespaceparsefunc.html#a7fb30f0eef02f86d065092932f985b7f',1,'parsefunc']]]
+  ['ln_0',['ln',['../d7/dad/namespacemathlib.html#a2fc88b3a01bb6d1f01218cf29ae66c9f',1,'mathlib']]]
 ];
