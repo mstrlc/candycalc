@@ -1,6 +1,7 @@
 ##
-#   @file mathlib_test.py
-#   @brief Tests for implementation of library 'mathlib'
+#  @file mathlib_test.py
+#  @package mathlib_test
+#  @brief Tests for implementation of library 'mathlib'
 
 import mathlib
 import pytest

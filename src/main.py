@@ -1,3 +1,8 @@
+##
+#  @file main.py
+#  @package main
+# @brief Main file for the project
+
 from signal import signal
 import os
 import sys
@@ -8,6 +13,7 @@ from pip import main
 from ui import Ui_mainWindow
 import parsefunc
 
+# Set current directory to the directory of this file
 currentDirectory = os.path.dirname(os.path.realpath(__file__))
 
 try:
@@ -17,8 +23,8 @@ try:
 except ImportError:
     pass
 
-## @package candyCalc
-#  @brief   Main GUI window of the application
+##  
+#   @brief   Main GUI window of the application
 class mainWindow(QMainWindow, Ui_mainWindow):
 
     ## @brief   Main window constructor
@@ -224,15 +230,15 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # @param function Function character to be added
     def addFunction(self, function):
         self.handleError()
-        if(function != "√("):
-            self.labelMain.setText(self.labelMain.text() + function)
-        elif(function == "√("):
+        if(function == "√("):
             if(self.pushButtonRoot.text() == "√x"):
                 self.labelMain.setText(self.labelMain.text() + "√(")
                 self.pushButtonRoot.setText("ⁿ√x")
             elif(self.pushButtonRoot.text() == "ⁿ√x"):
                 self.labelMain.setText(self.labelMain.text() + ",")
                 self.pushButtonRoot.setText("√x")
+        else:
+            self.labelMain.setText(self.labelMain.text() + function)
         # if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
         #     self.deleteDigit()
         #     self.labelMain.setText(self.labelMain.text() + function)
@@ -268,18 +274,19 @@ class mainWindow(QMainWindow, Ui_mainWindow):
             self.labelSecond.setText(parsefunc.get_parsed_input(self.labelMain.text())) # Copy the expression to the second display
             self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
         except ValueError:
-            self.labelSecond.setText(self.labelMain.Text())
+            self.labelSecond.setText(self.labelMain.text())
             self.labelMain.setText("Value error")
         except ZeroDivisionError:
-            self.labelSecond.setText(self.labelMain.Text())
+            self.labelSecond.setText(self.labelMain.text())
             self.labelMain.setText("Math error")
         except OverflowError:
-            self.labelSecond.setText(self.labelMain.Text())
+            self.labelSecond.setText(self.labelMain.text())
             self.labelMain.setText("Num too big")
         except SyntaxError:
-            self.labelSecond.setText(self.labelMain.Text())
+            self.labelSecond.setText(self.labelMain.text())
             self.labelMain.setText("Syntax error")
         except:
+            self.labelSecond.setText(self.labelMain.text())
             self.labelMain.setText("Error")
 
 
