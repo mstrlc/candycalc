@@ -3,12 +3,19 @@ import os
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
-from PyQt5.QtGui import QFont, QFontDatabase
+from PyQt5.QtGui import QFont, QFontDatabase, QIcon
 from pip import main
 from ui import Ui_mainWindow
 import parsefunc
 
 currentDirectory = os.path.dirname(os.path.realpath(__file__))
+
+try:
+    from ctypes import windll  # Only exists on Windows.
+    myappid = 'mycompany.myproduct.subproduct.version'
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+except ImportError:
+    pass
 
 ## @package candyCalc
 #  @brief   Main GUI window of the application
@@ -30,8 +37,8 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the font for every GUI element
     # Initialize the labels' text so the GUI resizes appropriately for text sizes
     def setupFonts(self):
-        QFontDatabase.addApplicationFont("fonts/FiraCode-Bold.ttf")
-        QFontDatabase.addApplicationFont("fonts/FiraCode-Medium.ttf")
+        QFontDatabase.addApplicationFont(os.path.join(currentDirectory, "fonts/FiraCode-Bold.ttf"))
+        QFontDatabase.addApplicationFont(os.path.join(currentDirectory, "fonts/FiraCode-Medium.ttf"))
         self.labelMain.setFont(QFont("Fira Code"))
         self.labelSecond.setFont(QFont("Fira Code"))
         self.pushButton0.setFont(QFont("Fira Code"))
@@ -274,5 +281,6 @@ class mainWindow(QMainWindow, Ui_mainWindow):
 # Handle creating and closing the main window
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon(os.path.join(currentDirectory, 'icon.ico')))
     window = mainWindow()
     sys.exit(app.exec_())
