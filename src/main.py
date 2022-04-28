@@ -2,7 +2,8 @@ from signal import signal
 import os
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+from PyQt5.QtGui import QFont, QFontDatabase
 from pip import main
 from ui import Ui_mainWindow
 import parsefunc
@@ -20,7 +21,40 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         super().__init__()
         self.setupUi(self)
         self.show()
+        self.setupFonts()
         self.connectButtons()
+
+    ## @brief Set the default GUI font
+    #
+    def setupFonts(self):
+        QFontDatabase.addApplicationFont("fonts/FiraCode-Bold.ttf")
+        QFontDatabase.addApplicationFont("fonts/FiraCode-Medium.ttf")
+        self.labelMain.setFont(QFont("Fira Code"))
+        self.labelSecond.setFont(QFont("Fira Code"))
+        self.pushButton0.setFont(QFont("Fira Code"))
+        self.pushButton1.setFont(QFont("Fira Code"))
+        self.pushButton2.setFont(QFont("Fira Code"))
+        self.pushButton3.setFont(QFont("Fira Code"))
+        self.pushButton4.setFont(QFont("Fira Code"))
+        self.pushButton5.setFont(QFont("Fira Code"))
+        self.pushButton6.setFont(QFont("Fira Code"))
+        self.pushButton7.setFont(QFont("Fira Code"))
+        self.pushButton8.setFont(QFont("Fira Code"))
+        self.pushButton9.setFont(QFont("Fira Code"))
+        self.pushButtonDec.setFont(QFont("Fira Code"))
+        self.pushButtonLBrac.setFont(QFont("Fira Code"))
+        self.pushButtonRBrac.setFont(QFont("Fira Code"))
+        self.pushButtonLn.setFont(QFont("Fira Code"))
+        self.pushButtonFact.setFont(QFont("Fira Code"))
+        self.pushButtonRoot.setFont(QFont("Fira Code"))
+        self.pushButtonExp.setFont(QFont("Fira Code"))
+        self.pushButtonDiv.setFont(QFont("Fira Code"))
+        self.pushButtonMul.setFont(QFont("Fira Code"))
+        self.pushButtonMin.setFont(QFont("Fira Code"))
+        self.pushButtonPlus.setFont(QFont("Fira Code"))
+        self.pushButtonDel.setFont(QFont("Fira Code"))
+        self.pushButtonCE.setFont(QFont("Fira Code"))
+        self.pushButtonEq.setFont(QFont("Fira Code"))
 
     ## @brief Connects the GUI buttons to function calls
     # 
@@ -134,7 +168,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # @todo Check if a decimal point is already present in the current number
     def addDecimal(self): # Add decimal point to the display, only if the last character is a digit
-        if(self.labelMain.text()[-1].isdigit()):
+        if(len(self.labelMain.text()) == 0):
+            self.labelMain.setText(".")
+        elif(self.labelMain.text()[-1].isdigit()):
             self.labelMain.setText(self.labelMain.text() + ".")
 
     ## @brief Add a bracket to the display
@@ -160,18 +196,19 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # @param function Function character to be added
     def addFunction(self, function):
-        if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
-            self.deleteDigit()
-            self.labelMain.setText(self.labelMain.text() + function)
-        if(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
-            self.labelMain.setText(self.labelMain.text() + function)
-        elif(function == "√("):
-            if(self.pushButtonRoot.text() == "√x"):
-                self.labelMain.setText(self.labelMain.text() + "√(")
-                self.pushButtonRoot.setText("ⁿ√x")
-            elif(self.pushButtonRoot.text() == "ⁿ√x"):
-                self.labelMain.setText(self.labelMain.text() + ",")
-                self.pushButtonRoot.setText("√x")
+        self.labelMain.setText(self.labelMain.text() + function)
+        # if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
+        #     self.deleteDigit()
+        #     self.labelMain.setText(self.labelMain.text() + function)
+        # elif(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
+        #     self.labelMain.setText(self.labelMain.text() + function)
+        # elif(function == "√("):
+        #     if(self.pushButtonRoot.text() == "√x"):
+        #         self.labelMain.setText(self.labelMain.text() + "√(")
+        #         self.pushButtonRoot.setText("ⁿ√x")
+        #     elif(self.pushButtonRoot.text() == "ⁿ√x"):
+        #         self.labelMain.setText(self.labelMain.text() + ",")
+        #         self.pushButtonRoot.setText("√x")
 
     ## @brief Delete the last digit from the display
     #
@@ -198,7 +235,10 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the calculation to be the text of the secondary label
     def finishCalculation(self): # Calculate the expression
         self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
-        self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
+        try:
+            self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
+        except:
+            self.labelMain.setText("Error")
 
 ## @brief Main function
 #
