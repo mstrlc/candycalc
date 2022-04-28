@@ -55,6 +55,10 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.pushButtonDel.setFont(QFont("Fira Code"))
         self.pushButtonCE.setFont(QFont("Fira Code"))
         self.pushButtonEq.setFont(QFont("Fira Code"))
+        self.labelMain.setText("Initialize")
+        self.labelSecond.setText("Initialize")
+        self.labelMain.setText("")
+        self.labelSecond.setText("")
 
     ## @brief Connects the GUI buttons to function calls
     # 
