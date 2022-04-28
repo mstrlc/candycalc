@@ -1,0 +1,4 @@
+xstrel03 100 (GUI, mockup, instalator a odinstalator)
+xkurci00 100 (testy matematicke knihovny, makefile, profiling)
+xseidl06 100 (parsovani vstupu a vystupu, debugging, doxyfile)
+xnovym00 100 (matematicka knihovna, uzivatelska prirucka)

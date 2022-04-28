@@ -3,12 +3,19 @@ import os
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
-from PyQt5.QtGui import QFont, QFontDatabase
+from PyQt5.QtGui import QFont, QFontDatabase, QIcon
 from pip import main
 from ui import Ui_mainWindow
 import parsefunc
 
 currentDirectory = os.path.dirname(os.path.realpath(__file__))
+
+try:
+    from ctypes import windll  # Only exists on Windows.
+    myappid = 'candycalc.1.0.0'
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+except ImportError:
+    pass
 
 ## @package candyCalc
 #  @brief   Main GUI window of the application
@@ -30,8 +37,8 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the font for every GUI element
     # Initialize the labels' text so the GUI resizes appropriately for text sizes
     def setupFonts(self):
-        QFontDatabase.addApplicationFont("fonts/FiraCode-Bold.ttf")
-        QFontDatabase.addApplicationFont("fonts/FiraCode-Medium.ttf")
+        QFontDatabase.addApplicationFont(os.path.join(currentDirectory, "fonts/FiraCode-Bold.ttf"))
+        QFontDatabase.addApplicationFont(os.path.join(currentDirectory, "fonts/FiraCode-Medium.ttf"))
         self.labelMain.setFont(QFont("Fira Code"))
         self.labelSecond.setFont(QFont("Fira Code"))
         self.pushButton0.setFont(QFont("Fira Code"))
@@ -100,6 +107,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.pushButtonDel.clicked.connect(self.deleteDigit)
         self.pushButtonCE.clicked.connect(self.clearAll)
         self.pushButtonEq.clicked.connect(self.finishCalculation)
+        
+        # Menu bar items
+        self.menuFile.triggered.connect(sys.exit(app.exec_()))
 
     ## @brief Handle the keyboard input and connect it to the GUI buttons
     # 
@@ -208,26 +218,26 @@ class mainWindow(QMainWindow, Ui_mainWindow):
 
     ## @brief Add a function character to the display
     #
-    # If the last entered character was also a fucntion character, replace it with the currently pressed one, so there can't be two function characters in a row
     # If the function is root, change the text on the button to "n√x" to better indicate the function
     #
     # @todo Check if a function character is already present in the display and replace it (commented out code was trying to acomplish this), now handled by parser
     # @param function Function character to be added
     def addFunction(self, function):
         self.handleError()
-        self.labelMain.setText(self.labelMain.text() + function)
+        if(function != "√("):
+            self.labelMain.setText(self.labelMain.text() + function)
+        elif(function == "√("):
+            if(self.pushButtonRoot.text() == "√x"):
+                self.labelMain.setText(self.labelMain.text() + "√(")
+                self.pushButtonRoot.setText("ⁿ√x")
+            elif(self.pushButtonRoot.text() == "ⁿ√x"):
+                self.labelMain.setText(self.labelMain.text() + ",")
+                self.pushButtonRoot.setText("√x")
         # if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
         #     self.deleteDigit()
         #     self.labelMain.setText(self.labelMain.text() + function)
         # elif(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
         #     self.labelMain.setText(self.labelMain.text() + function)
-        # elif(function == "√("):
-        #     if(self.pushButtonRoot.text() == "√x"):
-        #         self.labelMain.setText(self.labelMain.text() + "√(")
-        #         self.pushButtonRoot.setText("ⁿ√x")
-        #     elif(self.pushButtonRoot.text() == "ⁿ√x"):
-        #         self.labelMain.setText(self.labelMain.text() + ",")
-        #         self.pushButtonRoot.setText("√x")
 
     ## @brief Delete the last digit from the display
     #
@@ -254,8 +264,8 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the result to be the text of main label
     # Set the calculation to be the text of the secondary label
     def finishCalculation(self): # Calculate the expression
-        self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
         try:
+            self.labelSecond.setText(parsefunc.get_parsed_input(self.labelMain.text())) # Copy the expression to the second display
             self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
         except ValueError:
             self.labelMain.setText("Error")
@@ -274,5 +284,6 @@ class mainWindow(QMainWindow, Ui_mainWindow):
 # Handle creating and closing the main window
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon(os.path.join(currentDirectory, 'icon.ico')))
     window = mainWindow()
     sys.exit(app.exec_())

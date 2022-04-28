@@ -1070,18 +1070,33 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>420</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Help</string>
+     <string>File</string>
     </property>
-    <addaction name="actionOpen_user_guide"/>
+    <addaction name="actionQuit_2"/>
    </widget>
-   <addaction name="menuHelp"/>
+   <addaction name="menuFile"/>
   </widget>
   <action name="actionOpen_user_guide">
+   <property name="text">
+    <string>Open user guide</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionQuit_2">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionOpen_user_guide_2">
    <property name="text">
     <string>Open user guide</string>
    </property>
@@ -1090,12 +1105,12 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonsNum">
+  <buttongroup name="buttonsOper">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="buttonsOper">
+  <buttongroup name="buttonsNum">
    <property name="exclusive">
     <bool>false</bool>
    </property>
