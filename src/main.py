@@ -107,6 +107,9 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         self.pushButtonDel.clicked.connect(self.deleteDigit)
         self.pushButtonCE.clicked.connect(self.clearAll)
         self.pushButtonEq.clicked.connect(self.finishCalculation)
+        
+        # Menu bar items
+        self.menuFile.triggered.connect(sys.exit(app.exec_()))
 
     ## @brief Handle the keyboard input and connect it to the GUI buttons
     # 
