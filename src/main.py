@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from pip import main
 from ui import Ui_mainWindow
+import parsefunc
 
 ## @package candyCalc
 #  @brief   Main GUI window of the application
@@ -157,7 +158,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     #
     # @param function Function character to be added
     def addFunction(self, function):
-        if(self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^"):
+        if(len(self.labelMain.text()) > 0 and ( self.labelMain.text()[-1] == "+" or self.labelMain.text()[-1] == "-" or self.labelMain.text()[-1] == "/" or self.labelMain.text()[-1] == "×" or self.labelMain.text()[-1] == "^")):
             self.deleteDigit()
             self.labelMain.setText(self.labelMain.text() + function)
         if(function != "√(" and ( len(self.labelMain.text()) == 0 or ( self.labelMain.text()[-1].isdigit() or self.labelMain.text()[-1] == ")"))): # If previous character is a digit or a closing bracket
@@ -194,7 +195,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
     # Set the calculation to be the text of the secondary label
     def finishCalculation(self): # Calculate the expression
         self.labelSecond.setText(self.labelMain.text()) # Copy the expression to the second display
-        self.labelMain.setText(str(eval(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
+        self.labelMain.setText(str(parsefunc.get_result(self.labelMain.text()))) # Calculate the expression and display the result TODO send to our own math parse function
 
 ## @brief Main function
 #
