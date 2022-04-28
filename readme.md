@@ -26,4 +26,4 @@ Tento program je svobodny software: muzete jej sirit a upravovat podle ustanoven
 
 Tento program je rozsirovan v nadeji, ze bude uzitecny, avsak BEZ JAKEKOLIV ZARUKY. Neposkytuji se ani odvozene zaruky PRODEJNOSTI anebo VHODNOSTI PRO URCITY UCEL. Dalsi podrobnosti hledejte v Obecne verejne licenci GNU.
 
-Kopii Obecne verejne licence GNU je v soboru licence.md. Take ji najdete zde: <http://www.gnu.org/licenses/>.
+Kopie Obecne verejne licence GNU je v soboru licence.md. Take ji najdete zde: <http://www.gnu.org/licenses/>.
