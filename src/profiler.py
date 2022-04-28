@@ -34,7 +34,6 @@ def main():
     arithmetic_mean = calculate_arithmetic_mean(total_sum, n)
     cProfile.run(
         f'calculate_standard_deviation({data}, {arithmetic_mean}, {n})')
-    cProfile.run(f'std({data}, ddof=1)')
 
 
 if __name__ == '__main__':
