@@ -8,8 +8,7 @@ Prostredi
 
 Windows 64bit
 
-(Ubuntu 64bit)
-Lze spustit rucne
+(Ubuntu 64bit, macOS 64bit – lze spustit rucne, neni dodavan instalator)
 
 Autori
 ------
@@ -36,7 +35,9 @@ Ubuntu
 
 Windows
 
-    python 3.x vyzadovan (MS Store / https://www.python.org/downloads/
+python3 vyzadovan (MS Store / https://www.python.org/downloads/
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     python get-pip.py
     pip install PyQt5
     pip install pyinstaller
