@@ -25,16 +25,21 @@ Zavislosti
 
 Pro uspesne rucni spusteni je potreba zavislosti `python3` a `pyqt5`.
 Pro sestaveni spustitelnych soboru je potreba `pip` a `pyinstaller`.
-Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
+Zavilosti se nainstaluji rucne pomoci nasledujicich prikazu:
 
-    make dependencies
+Ubuntu
 
-Nebo rucne pomoci nasledujicich prikazu:
-    Ubuntu                      |  Windows
-    apt install python3         | python 3.x vyzadovan (MS Store / https://www.python.org/downloads/
-    apt install python3-pyqt5   | python get-pip.py
-    apt install pip             | pip install PyQt5
-    pip install pyinstaller     | pip install pyinstaller
+    apt install python3         
+    apt install python3-pyqt5   
+    apt install pip             
+    pip install pyinstaller     
+
+Windows
+
+    python 3.x vyzadovan (MS Store / https://www.python.org/downloads/
+    python get-pip.py
+    pip install PyQt5
+    pip install pyinstaller
 
 Rucni spusteni
 --------------
