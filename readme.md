@@ -8,8 +8,8 @@ Prostredi
 
 Windows 64bit
 
-* (Ubuntu 64bit)
-* Lze spustit rucne
+(Ubuntu 64bit)
+Lze spustit rucne
 Autori
 ------
 
@@ -29,7 +29,7 @@ Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
     make dependencies
 
 Nebo rucne pomoci nasledujicich prikazu:
-    Ubuntu                        Windows
+    Ubuntu                      |  Windows
     apt install python3         | python 3.x vyzadovan (MS Store / https://www.python.org/downloads/
     apt install python3-pyqt5   | python get-pip.py
     apt install pip             | pip install PyQt5
