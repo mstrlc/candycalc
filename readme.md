@@ -6,9 +6,10 @@ Pro vyvoj kalkulacky jsme vybrali jazyk Python. Uzivatelske rozhrani je vytvoren
 Prostredi
 ---------
 
-Ubuntu 64bit
 Windows 64bit
 
+* (Ubuntu 64bit)
+* Lze spustit rucne
 Autori
 ------
 
@@ -21,7 +22,6 @@ candyCalc
 Zavislosti
 ----------
 
-Nasledujici prikazy jsou pro Ubuntu Linux. Na Windows lze pouzit obdobne prikazy.
 Pro uspesne rucni spusteni je potreba zavislosti `python3` a `pyqt5`.
 Pro sestaveni spustitelnych soboru je potreba `pip` a `pyinstaller`.
 Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
@@ -29,16 +29,15 @@ Zavilosti se nainstaluji provedenim prikazu v adresari `src`:
     make dependencies
 
 Nebo rucne pomoci nasledujicich prikazu:
-
-    apt install python3
-    apt install python3-pyqt5
-    apt install pip
-    pip install pyinstaller
+    Ubuntu                        Windows
+    apt install python3         | python 3.x vyzadovan (MS Store / https://www.python.org/downloads/
+    apt install python3-pyqt5   | python get-pip.py
+    apt install pip             | pip install PyQt5
+    pip install pyinstaller     | pip install pyinstaller
 
 Rucni spusteni
 --------------
 
-Nasledujici prikazy jsou pro Ubuntu Linux. Na Windows lze pouzit obdobne prikazy.
 Program je psany v jazyce Python, tedy neni potreba kompilace.
 Po rozbaleni slozky `ivs-calculator` provedte pro spusteni nasledujici prikazy v adresari `src`:
 
@@ -62,7 +61,7 @@ soubor `candycalc` na Ubuntu nebo `candycalc.exe` na Windows. Vsechny soubory v 
 Instalace
 ---------
 
-Program lze nainstalovat spustenim souboru `candycalc-install.deb` pro Ubuntu, nebo `candycalc-install.exe` pro Windows.
+Program lze nainstalovat spustenim souboru `candycalc-install.exe` pro Windows.
 Blizsi postup instalace je popsan v uzivatelske prirucce.
 
 Licence
