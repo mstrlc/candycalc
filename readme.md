@@ -10,6 +10,7 @@ Windows 64bit
 
 (Ubuntu 64bit)
 Lze spustit rucne
+
 Autori
 ------
 
