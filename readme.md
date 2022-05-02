@@ -3,6 +3,8 @@
 
 Pro vyvoj kalkulacky jsme vybrali jazyk Python. Uzivatelske rozhrani je vytvoreno programem Qt Creator.
 
+![screenshot](screenshot.png)
+
 Prostredi
 ---------
 
