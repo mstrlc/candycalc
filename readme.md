@@ -1,4 +1,5 @@
 # **candyCalc**
+![logo](design/logo.png)
 ## **Tymovy projekt IVS**
 
 Pro vyvoj kalkulacky jsme vybrali jazyk Python. Uzivatelske rozhrani je vytvoreno programem Qt Creator.
