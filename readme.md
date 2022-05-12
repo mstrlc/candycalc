@@ -1,4 +1,3 @@
-# **candyCalc**
 ![logo](design/logo.png)
 ## **Tymovy projekt IVS**
 
